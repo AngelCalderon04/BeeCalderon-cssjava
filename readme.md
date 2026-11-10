@@ -42,27 +42,4 @@ Esta tabla describe **lo que aparece realmente en los archivos revisados**. Las 
 | **8. Formularios** | `contacto.html`: «Envíanos tu solicitud» | `form`, `fieldset`, `legend`, `label`, `input` (`text`, `email`, `tel`, `checkbox`, `number`, `radio`), `textarea`, `button` | Permiten recoger datos de contacto y conocer qué producto o servicio solicita el visitante. Los grupos separan datos personales e información del pedido. |
 | **9. Semántica y div/span** | `index.html`: estructura y preguntas frecuentes; `servicios.html`: catálogo; `contacto.html`: datos de contacto | `header`, `nav`, `section`, `article`, `aside`, `footer`, `main`, `address`, `details`, `summary`, `div`, `span` | Identifican áreas con una función específica: navegación, contenido, fichas de productos, preguntas desplegables y datos de contacto. `div` y `span` agrupan elementos cuando es necesario. **No todas aparecen aún en todas las páginas.** |
 
-## Pendientes para cumplir completamente la rúbrica
-
-- Agregar una `meta description` diferente a cada página y corregir `lang="en"` por `lang="es"` en Contacto.
-- Usar un `main` en Inicio y Contacto, y colocar dentro del `main` todas las secciones principales de Servicios.
-- Agregar `footer` con nombre y matrícula en las tres páginas (actualmente solo Inicio tiene un footer, sin esos datos).
-- Incorporar una novedad o noticia real del apiario con `article` y `time datetime`.
-- Incorporar al menos **ocho** tipos de texto de la lista evaluada. Actualmente se observan seis grupos: `strong`, `em`, `q`, `abbr`, `sub`/`sup` y `blockquote`/`cite`. No documentar `mark`, `del`, `ins` o `small` como usados mientras no se incorporen.
-- Agregar en Servicios una lista ordenada `ol` y una lista `ul` con sublista anidada correctamente.
-- Completar los cinco tipos de enlaces: falta `mailto:` funcional, enlace interno `#id` y descarga con `download`. Los dos enlaces de correo existentes no usan `mailto:`.
-- Agregar `figure` y `figcaption`, un `iframe` con `title` y un `video` o `audio` con controles y `source`.
-- Completar el formulario con al menos siete tipos de `input`, `select` con `optgroup` y al menos dos atributos de validación adicionales a `required`. Actualmente hay seis tipos de input y solo se encontró `min`/`max` como tipos adicionales de validación.
-- Comprobar que el formulario realmente envíe datos antes de presentarlo como operativo; `action="#"` no configura un servicio de recepción.
-- Verificar que el correo mostrado exista antes de utilizarlo como dirección de contacto activa.
-- Revisar imágenes y demás archivos asociados para confirmar que sus rutas funcionen al publicar.
-- Validar las tres páginas con https://validator.w3.org/ y corregir todos los errores.
-- Publicar las tres páginas en GitHub Pages, mantener al menos cinco commits descriptivos y entregar los enlaces del sitio y del repositorio.
-
-## Estado de revisión
-
-Este README fue contrastado con los archivos `index.html`, `servicios.html` y `contacto.html` proporcionados. **No significa que el proyecto ya esté terminado o validado por W3C.** Una vez realizados los cambios, debe actualizarse el mapa para reflejar la versión final.
-
----
-
 **BeeCalderones — Tradición familiar, dulzura natural.**
