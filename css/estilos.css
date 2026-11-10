@@ -72,9 +72,7 @@ hr {
   margin: 24px 0;
 }
 
-/* =========================================
-   LAYOUT (FLEXBOX Y GRID)
-   ========================================= */
+/*   LAYOUT (FLEXBOX Y GRID) */
 header {
   display: flex;
   justify-content: space-between;
@@ -211,9 +209,7 @@ summary {
   display: none;
 }
 
-/* 
-   5. TABLA Y FORMULARIO
-   */
+/* TABLA Y FORMULARIO*/
 .tabla-contenedor {
   overflow-x: auto;
 }
