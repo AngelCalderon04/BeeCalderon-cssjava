@@ -1,122 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeeCalderones</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BeeCalderones: Apiario de la Familia Calderón. Producción y comercialización de miel de abeja pura y 
+  apicultura responsable en la República Dominicana.">
+  <title>BeeCalderones · Apiario de la Familia Calderón</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/app.js" defer></script>
 </head>
 <body>
 
-      <header>
-    <h1>BeeCalderones</h1>
-    <p>Apiario de la Familia Calderón</p>
+
+  <header class="encabezado">
+    <div>
+      <h1>BeeCalderones</h1>
+      <p>Apiario de la Familia Calderón</p>
+    </div>
+    <div class="acciones-header">
+      <button type="button" id="btn-tema" class="boton-secundario">Modo oscuro</button>
+      <button type="button" id="btn-menu" class="btn-hamburguesa" aria-expanded="false">Menú ☰</button>
+    </div>
   </header>
-  <nav>
-    <a href="index.html">Inicio</a> |
-    <a href="servicios.html">Servicios</a> |
+
+  <nav id="menu-principal" class="menu">
+    <a href="index.html" aria-current="page">Inicio</a>
+    <a href="servicios.html">Servicios</a>
     <a href="contacto.html">Contacto</a>
-    <hr>
-
-    <a href="contacto.html#formulario-solicitud">
-    Ir directamente al formulario
-</a>
-    
   </nav>
-</section>
-  
-   
-    <section id="bienvenida">
-      <h2>De nuestra familia a tu mesa</h2>
-      <div style="display: flex; gap: 20px; align-items: center;">
-        <img src="abejascristino.jpeg"
-             alt="Colmenas y frascos de miel pura del apiario familiar BeeCalderones"
-             width="250" height="200">
-        <div>
-          <p><strong>¡Bienvenidos a BeeCalderones!</strong></p>
-          <p>En nuestro apiario familiar trabajamos con dedicación y respeto por la naturaleza para ofrecer <em>miel de abeja de calidad</em>. Creemos en la importancia de conservar las abejas, promover la apicultura responsable y compartir con nuestros clientes un producto que nace del extraordinario trabajo de estos pequeños polinizadores.</p>
-          <p>Cada presentación de nuestra miel representa el esfuerzo, la tradición y el compromiso de la Familia Calderón.</p>
-          <p><q>El dulce sabor de la naturaleza, acompañado del cariño de nuestra familia</q>.</p>
-          <p><a href="servicios.html">Descubre nuestros productos</a></p>
+
+
+  <div class="contenedor layout-portada">
+
+    <main>
+ 
+      <section id="bienvenida" class="tarjeta">
+        <h2>De nuestra familia a tu mesa</h2>
+
+        <div class="fila">
+          <img src="img/abejascristino.jpeg"
+               alt="Colmenas instaladas en el campo verde del apiario familiar BeeCalderones"
+               width="250" height="200" class="img-destacada">
+
+          <div>
+            <p><strong>¡Bienvenidos a BeeCalderones!</strong></p>
+            <p>En nuestro apiario familiar trabajamos con dedicación y respeto por la naturaleza para ofrecer <em>miel de abeja de calidad</em>. Creemos en la importancia 
+             de conservar las abejas, promover la apicultura responsable y compartir con nuestros clientes un producto que nace del extraordinario trabajo de estos pequeños polinizadores.</p>
+            <p>Cada presentación de nuestra miel representa el esfuerzo, la tradición y el compromiso de la Familia Calderón.</p>
+            <p><q>El dulce sabor de la naturaleza, acompañado del cariño de nuestra familia</q>.</p>
+            <p><a href="servicios.html" class="boton">Descubre nuestros productos</a></p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <hr>
-    
-    
-    <section id="quienes-somos">
-      <h2>¿Quiénes somos?</h2>
-      <div style="display: flex; gap: 30px; align-items: center;">
-        
-      
-        <div>
-          <p><strong>BeeCalderones</strong> es un emprendimiento familiar dedicado a la apicultura, una actividad que combina el trabajo responsable con las colmenas, la producción de miel y el cuidado de las abejas en un área de manejo de más de 500 m<sup>2</sup>.</p>
-          <p>Nuestro propósito es ofrecer productos de calidad a nuestros clientes mientras fomentamos el respeto por la naturaleza y la conservación de los polinizadores.</p>
-          <p>Creemos que la apicultura no solamente representa una oportunidad de desarrollo económico familiar, sino también una forma de contribuir al equilibrio de los ecosistemas.</p>
-          <h3>Nuestra misión</h3>
-          <p>Producir y comercializar miel de abeja de calidad mediante prácticas apícolas responsables, brindando una atención cercana a nuestros clientes y contribuyendo al cuidado de las abejas y del medioambiente.</p>
-          <h3>Nuestra visión</h3>
-          <p>Ser un apiario familiar reconocido en la región Este de la <abbr title="República Dominicana">RD</abbr> por la calidad de nuestros productos, la confianza de nuestros clientes y nuestro compromiso con el desarrollo sostenible de la apicultura.</p>
+      <hr>
+
+     
+      <section id="quienes-somos" class="tarjeta">
+        <h2>¿Quiénes somos?</h2>
+
+        <div class="fila">
+          <div>
+            <p><strong>BeeCalderones</strong> es un emprendimiento familiar dedicado a la apicultura, una actividad que combina el trabajo responsable con las colmenas, la producción de miel y 
+            el cuidado de las abejas en un área de manejo de más de 500 m<sup>2</sup>.</p>
+            <p>Nuestro propósito es ofrecer productos de calidad a nuestros clientes mientras fomentamos el respeto por la naturaleza y la conservación de los polinizadores.</p>
+            <p>Creemos que la apicultura no solamente representa una oportunidad de desarrollo económico familiar, sino también una forma de contribuir al equilibrio de los ecosistemas.</p>
+
+            <h3>Nuestra misión</h3>
+            <p>Producir y comercializar miel de abeja de calidad mediante prácticas apícolas responsables, brindando una atención cercana a nuestros clientes y contribuyendo al cuidado de las abejas y del medioambiente.</p>
+
+            <h3>Nuestra visión</h3>
+            <p>Ser un apiario familiar reconocido en la región Este de la <abbr title="República Dominicana">RD</abbr> por la calidad de nuestros productos, la confianza de nuestros clientes y 
+            nuestro compromiso con el desarrollo sostenible de la apicultura.</p>
+          </div>
+
+          <video controls width="320" height="220">
+            <source src="img/apiario.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de video.
+          </video>
         </div>
-      
-        <video controls width="450" height="350">
-          <source src="apiario.mp4" type="video/mp4">
-        </video>
+
+        <h3>Nuestros valores</h3>
+        <ul>
+          <li><strong>Responsabilidad:</strong> Trabajamos con compromiso y dedicación en cada actividad de nuestro apiario.</li>
+          <li><strong>Honestidad:</strong> Promovemos relaciones transparentes y respetuosas con nuestros clientes.</li>
+          <li><strong>Calidad:</strong> Nos esforzamos por ofrecer productos cuidadosamente manejados.</li>
+          <li><strong>Respeto por la naturaleza:</strong> Reconocemos la importancia de las abejas para la biodiversidad.</li>
+          <li><strong>Unión familiar:</strong> Valoramos el trabajo en equipo y el esfuerzo de nuestra familia.</li>
+        </ul>
+
+        <h3>Nuestros objetivos</h3>
+        <h4>Objetivo general</h4>
+        <p>Fortalecer BeeCalderones como un emprendimiento apícola familiar dedicado a la comercialización de miel y al manejo responsable de las abejas, 
+        promoviendo la calidad, el servicio al cliente y la protección ambiental.</p>
+
+        <h4>Objetivos específicos</h4>
+        <ul>
+          <li>Ofrecer miel de abeja en diferentes presentaciones para satisfacer las necesidades de nuestros clientes.</li>
+          <li>Promover prácticas apícolas responsables que contribuyan al bienestar de las colonias de abejas.</li>
+          <li>Desarrollar servicios de rescate y reubicación responsable de enjambres, cuando las condiciones permitan realizar estas actividades de forma segura.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section id="novedades" class="tarjeta">
+        <h2>Novedades de nuestro apiario</h2>
+
+        <article>
+          <h3>Conoce nuestras presentaciones de miel</h3>
+          <p>Publicado el <time datetime="2026-11-10">10 de noviembre de 2026</time></p>
+          <p>En BeeCalderones queremos que cada cliente encuentre una presentación adecuada a sus necesidades.</p>
+          <p>Actualmente ofrecemos miel en <mark>galones, medios galones y botellas</mark>, con opciones para el consumo familiar y otras necesidades. Por apertura de temporada, 
+          la botella de miel tiene un precio especial: antes <del>RD$850</del>, ahora <ins>RD$800</ins>.</p>
+          <p>Te invitamos a visitar nuestro catálogo, conocer nuestros precios y comunicarte con nosotros para realizar tus consultas y pedidos.</p>
+          <p><a href="servicios.html" class="boton">Ver catálogo de miel</a></p>
+        </article>
+      </section>
+    </main>
+
+    <aside class="barra-lateral">
+      <div class="tarjeta">
+        <h2>La importancia de las abejas</h2>
+        <p>Las abejas desempeñan una función fundamental en la naturaleza mediante la polinización de numerosas plantas.</p>
+        <p>Durante la búsqueda de néctar y polen, contribuyen a la reproducción de muchas especies vegetales, favoreciendo la biodiversidad y la producción agrícola.</p>
+        <p>La protección de estos insectos es una responsabilidad compartida.</p>
+
+        <blockquote cite="https://www.fao.org">
+          La apicultura responsable puede contribuir a la conservación de las colonias de abejas y a la sensibilización sobre su importancia ecológica.
+        </blockquote>
+        <p>Fuente de referencia: <cite>FAO</cite>.</p>
       </div>
-      <h3>Nuestros valores</h3>
-      <ul>
-        <li><strong>Responsabilidad:</strong> Trabajamos con compromiso y dedicación en cada actividad de nuestro apiario.</li>
-        <li><strong>Honestidad:</strong> Promovemos relaciones transparentes y respetuosas con nuestros clientes.</li>
-        <li><strong>Calidad:</strong> Nos esforzamos por ofrecer productos cuidadosamente manejados.</li>
-        <li><strong>Respeto por la naturaleza:</strong> Reconocemos la importancia de las abejas para la biodiversidad.</li>
-        <li><strong>Unión familiar:</strong> Valoramos el trabajo en equipo y el esfuerzo de nuestra familia.</li>
-      </ul>
-      <h3>Nuestros objetivos</h3>
-      <h4>Objetivo general</h4>
-      <p>Fortalecer BeeCalderones como un emprendimiento apícola familiar dedicado a la comercialización de miel y al manejo responsable de las abejas, promoviendo la calidad, el servicio al cliente y la protección ambiental.</p>
-      <h4>Objetivos específicos</h4>
-      <ul>
-        <li>Ofrecer miel de abeja en diferentes presentaciones para satisfacer las necesidades de nuestros clientes.</li>
-        <li>Promover prácticas apícolas responsables que contribuyan al bienestar de las colonias de abejas.</li>
-        <li>Desarrollar servicios de rescate y reubicación responsable de enjambres, cuando las condiciones permitan realizar estas actividades de forma segura.</li>
-      </ul>
-    </section>
-<hr> 
 
-  <aside>
-    <h2>La importancia de las abejas</h2>
-    <p>Las abejas desempeñan un papel
-<mark>fundamental para la polinización</mark>
-de numerosas plantas.</p>
-    <p>Durante la búsqueda de néctar y polen, contribuyen a la reproducción de muchas especies vegetales, favoreciendo la biodiversidad y la producción agrícola.</p>
-    <p>La protección de estos insectos es una responsabilidad compartida.</p>
-    <blockquote cite="https://www.fao.org">
-      La apicultura responsable puede contribuir a la conservación de las colonias de abejas y a la sensibilización sobre su importancia ecológica.
-    </blockquote>
-    <p>Fuente de referencia sobre polinizadores: <cite>Organización de las Naciones Unidas para la Alimentación y la Agricultura (FAO)</cite>.</p>
-    <h2>Preguntas frecuentes</h2>
-    <details>
-      <summary>¿Qué es la apicultura?</summary>
-      <p>Es la actividad dedicada al manejo y cuidado de colonias de abejas, principalmente para obtener productos como la miel y otros recursos de la colmena.</p>
-    </details>
-    <details>
-      <summary>¿Por qué la miel puede cristalizarse?</summary>
-      <p>La cristalización es un proceso natural relacionado con la composición de azúcares de la miel, su bajo porcentaje de agua (H<sub>2</sub>O) y las condiciones de 
-        almacenamiento. No significa necesariamente que se encuentre en mal estado.</p>
-    </details>
-    <details>
-      <summary>¿Por qué son importantes las abejas?</summary>
-      <p>Porque participan en la polinización de numerosas plantas, contribuyendo a la reproducción vegetal y al mantenimiento de los ecosistemas.</p>
-    </details>
-    <details>
-      <summary>¿BeeCalderones realiza rescates de enjambres?</summary>
-      <p>Sí. Ofrecemos un servicio de evaluación y rescate de enjambres, sujeto a las condiciones de seguridad y accesibilidad del lugar.</p>
-    </details>
-  </aside>
+      <div class="tarjeta">
+        <h2>Preguntas frecuentes</h2>
 
+        <details>
+          <summary>¿Qué es la apicultura?</summary>
+          <p>Es la actividad dedicada al manejo y cuidado de colonias de abejas, principalmente para obtener productos como la miel y otros recursos de la colmena.</p>
+        </details>
 
- <footer>
-    <p><small>&copy; 2026 Apiario Familiar BeeCalderon · Desarrollado por Angel L. Calderon · Matrícula: 2024-0380 · ISW-311</small></p>
+        <details>
+          <summary>¿Por qué la miel puede cristalizarse?</summary>
+          <p>La cristalización es un proceso natural relacionado con la composición de azúcares de la miel, su bajo porcentaje de agua (H<sub>2</sub>O) y las condiciones de 
+          almacenamiento. No significa que esté en mal estado.</p>
+        </details>
+
+        <details>
+          <summary>¿Por qué son importantes las abejas?</summary>
+          <p>Porque participan en la polinización de numerosas plantas, contribuyendo a la reproducción vegetal y al mantenimiento de los ecosistemas.</p>
+        </details>
+
+        <details>
+          <summary>¿BeeCalderones realiza rescates de enjambres?</summary>
+          <p>Sí. Ofrecemos un servicio de evaluación y rescate de enjambres, sujeto a las condiciones de seguridad y accesibilidad del lugar.</p>
+        </details>
+      </div>
+    </aside>
+
+  </div>
+
+  <button type="button" id="btn-arriba" class="btn-arriba" hidden>↑ Subir</button>
+
+  <footer class="pie">
+    <p><strong>BeeCalderones</strong> — Apiario de la Familia Calderón · <span id="anio">2026</span><br>
+    Tradición familiar, dulzura natural.</p>
+    <p><small>Proyecto integrador de Tecnologías de Internet I · Estudiante: Ángel Luis Calderón · Matrícula: 2024-0380</small></p>
   </footer>
 
 </body>
