@@ -5,7 +5,7 @@ const btnTema = document.getElementById("btn-tema");
 if (localStorage.getItem("temaBeeCalderones") === "oscuro") {
   document.body.classList.add("oscuro");
   if (btnTema) {
-    btnTema.textContent = "Modo claro";
+    btnTema.textContent = "Modo claro"; 
   }
 }
 

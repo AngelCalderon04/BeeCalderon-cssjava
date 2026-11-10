@@ -42,4 +42,11 @@ Esta tabla describe **lo que aparece realmente en los archivos revisados**. Las 
 | **8. Formularios** | `contacto.html`: «Envíanos tu solicitud» | `form`, `fieldset`, `legend`, `label`, `input` (`text`, `email`, `tel`, `checkbox`, `number`, `radio`), `textarea`, `button` | Permiten recoger datos de contacto y conocer qué producto o servicio solicita el visitante. Los grupos separan datos personales e información del pedido. |
 | **9. Semántica y div/span** | `index.html`: estructura y preguntas frecuentes; `servicios.html`: catálogo; `contacto.html`: datos de contacto | `header`, `nav`, `section`, `article`, `aside`, `footer`, `main`, `address`, `details`, `summary`, `div`, `span` | Identifican áreas con una función específica: navegación, contenido, fichas de productos, preguntas desplegables y datos de contacto. `div` y `span` agrupan elementos cuando es necesario. **No todas aparecen aún en todas las páginas.** |
 
+
+Funciones de JavaScript incluidas en js/app.js:
+
+1. alternarTema() - Cambia entre modo claro y modo oscuro y lo guarda en localStorage.
+2. alternarMenu() - Abre y cierra el menu de navegacion en pantallas de celular.
+3. pintarTarjetas() y filtrarCatalogo() - Muestra y filtra los productos en servicios.html.
+4. Validacion del formulario - Revisa nombre, correo, telefono dominicano (809/829/849) y pedido en contacto.html.
 **BeeCalderones — Tradición familiar, dulzura natural.**
