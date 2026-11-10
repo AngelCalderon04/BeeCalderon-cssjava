@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | BeeCalderon</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contáctanos en BeeCalderones: solicita miel de abeja pura o evaluación para rescate de enjambres.">
+  <title>Contacto | BeeCalderones</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/app.js" defer></script>
 </head>
 <body>
 
-     <header>
+  <header>
     <h1>Contáctanos</h1>
     <p><strong>Estamos para atenderte.</strong></p>
     <p>¿Deseas adquirir miel, conocer más sobre nuestros productos o consultar acerca de un enjambre? En <strong>BeeCalderones</strong> estaremos encantados de atender tu solicitud. Puedes comunicarte directamente con nosotros o completar nuestro formulario de contacto.</p>
+    <button type="button" id="btn-tema">Modo oscuro</button>
+    <button type="button" id="btn-menu" aria-expanded="false">Menú</button>
   </header>
-  <nav>
+
+  <nav id="menu">
     <a href="index.html">Inicio</a> |
     <a href="servicios.html">Servicios</a> |
-    <a href="contacto.html">Contacto</a>
+    <a href="contacto.html" aria-current="page">Contacto</a>
   </nav>
 
-
-      <section id="informacion-contacto">
+  <main>
+    <section id="informacion-contacto">
       <h2>Información de contacto y accesos directos</h2>
       <address>
         <strong>BeeCalderones</strong> — Apiario de la Familia Calderón.<br>
@@ -28,102 +34,132 @@
         Correo electrónico: <a href="mailto:contacto@beecalderones.do">contacto@beecalderones.do</a> (en proceso de activación)<br>
         Canal de atención: Llamadas telefónicas y consultas por WhatsApp.
       </address>
+
       <h3>Enlaces rápidos de atención</h3>
       <ul>
         <li>Llamar a BeeCalderones: <a href="tel:+18090001100">809-000-1100</a></li>
         <li>Escribir por WhatsApp: <a href="https://wa.me/18090001100" target="_blank" rel="noopener">Abrir chat de WhatsApp (809-000-1100)</a></li>
         <li>Correo electrónico: <a href="mailto:contacto@beecalderones.do">Enviar correo a BeeCalderones</a></li>
+        <li>Ir al formulario: <a href="#formulario-solicitud">Bajar al formulario de solicitud</a></li>
+        <li>Catálogo en PDF: <a href="catalogo-beecalderones.pdf" download>Descargar ficha de productos</a></li>
         <li>Consultar nuestros servicios: <a href="servicios.html">Ir a la página de Servicios</a></li>
         <li>Volver al inicio: <a href="index.html">Ir a la portada</a></li>
       </ul>
     </section>
 
+    <hr>
 
-
-    <!-- Formulario de contacto  -->
     <section id="formulario-solicitud">
       <h2>Envíanos tu solicitud</h2>
       <p>Completa tus datos y marca lo que necesitas:</p>
-      <form action="#" method="post">
-        
+
+      <form id="form-contacto" action="#" method="post" novalidate>
         <fieldset>
           <legend>Datos personales</legend>
+
           <p>
             <label for="nombre">Nombre completo:</label><br>
-            <input type="text" id="nombre" name="nombre" required>
+            <input type="text" id="nombre" name="nombre" required minlength="3" aria-describedby="error-nombre">
+            <span class="error" id="error-nombre"></span>
           </p>
+
           <p>
             <label for="correo">Correo electrónico:</label><br>
-            <input type="email" id="correo" name="correo" required>
+            <input type="email" id="correo" name="correo" required aria-describedby="error-correo">
+            <span class="error" id="error-correo"></span>
           </p>
+
           <p>
-            <label for="telefono">Teléfono / WhatsApp:</label><br>
-            <input type="tel" id="telefono" name="telefono" required>
+            <label for="telefono">Teléfono / WhatsApp (ej. 809-000-1100):</label><br>
+            <input type="tel" id="telefono" name="telefono" required pattern="[0-9\-]{10,12}" aria-describedby="error-telefono">
+            <span class="error" id="error-telefono"></span>
           </p>
         </fieldset>
-    
+
         <fieldset>
           <legend>Tu solicitud</legend>
+
           <p>¿Qué deseas solicitar? (Puedes marcar varios):<br>
-            <input type="checkbox" id="ped-galon" name="pedido" value="galon">
+            <input type="checkbox" id="ped-galon" name="pedido" value="Miel en galón">
             <label for="ped-galon">Miel en galón</label><br>
-            <input type="checkbox" id="ped-medio" name="pedido" value="medio-galon">
+
+            <input type="checkbox" id="ped-medio" name="pedido" value="Miel en medio galón">
             <label for="ped-medio">Miel en medio galón</label><br>
-            <input type="checkbox" id="ped-botella" name="pedido" value="botella">
+
+            <input type="checkbox" id="ped-botella" name="pedido" value="Miel en botella">
             <label for="ped-botella">Miel en botella</label><br>
-            <input type="checkbox" id="ped-rescate" name="pedido" value="rescate">
-            <label for="ped-rescate">Evaluación / rescate de enjambre</label>
+
+            <input type="checkbox" id="ped-rescate" name="pedido" value="Evaluación / rescate de enjambre">
+            <label for="ped-rescate">Evaluación / rescate de enjambre</label><br>
+            <span class="error" id="error-pedido"></span>
           </p>
+
           <p>
             <label for="cantidad">Cantidad de unidades:</label><br>
-            <input type="number" id="cantidad" name="cantidad" min="1" max="50" value="1">
+            <input type="number" id="cantidad" name="cantidad" min="1" max="50" value="1" aria-describedby="error-cantidad">
+            <span class="error" id="error-cantidad"></span>
           </p>
+
           <p>Nivel de urgencia:<br>
-            <input type="radio" id="urg-normal" name="urgencia" value="normal" checked>
+            <input type="radio" id="urg-normal" name="urgencia" value="Normal" checked>
             <label for="urg-normal">Normal</label>
-            <input type="radio" id="urg-pronta" name="urgencia" value="pronta">
+
+            <input type="radio" id="urg-pronta" name="urgencia" value="Urgente">
             <label for="urg-pronta">Urgente</label>
           </p>
+
           <p>
             <label for="mensaje">Mensaje o dirección:</label><br>
             <textarea id="mensaje" name="mensaje" rows="3" cols="30"></textarea>
           </p>
-          <button type="submit">Enviar solicitud</button>
+
+          <button type="submit" class="boton">Enviar solicitud</button>
         </fieldset>
       </form>
+
+  
+      <div id="mensaje-exito" class="mensaje-exito" hidden></div>
     </section>
 
+    <hr>
 
     <section id="como-solicitar">
-    <h2>¿Cómo solicitar nuestros productos?</h2>
-
-    <ol type="1">
+      <h2>¿Cómo solicitar nuestros productos?</h2>
+      <ol type="1">
         <li>Consulta las presentaciones de miel disponibles.</li>
         <li>Selecciona el producto y la cantidad que necesitas.</li>
         <li>Comunícate con BeeCalderones.</li>
         <li>Confirma la disponibilidad y los detalles de entrega.</li>
         <li>Coordina tu pedido con nuestro equipo.</li>
-    </ol>
-</section>
+      </ol>
+    </section>
 
-<section id="usos-miel">
-    <h2>Usos de nuestra miel</h2>
-
-    <ul>
+    <section id="usos-miel">
+      <h2>Usos de nuestra miel</h2>
+      <ul>
         <li>Endulzar bebidas.</li>
-
         <li>Acompañar alimentos:
-            <ul>
-                <li>Panes y tostadas.</li>
-                <li>Yogures.</li>
-                <li>Frutas.</li>
-            </ul>
+          <ul>
+            <li>Panes y tostadas.</li>
+            <li>Yogures.</li>
+            <li>Frutas.</li>
+          </ul>
         </li>
-
         <li>Preparar postres.</li>
         <li>Elaborar salsas y aderezos.</li>
-    </ul>
-</section>
-    
+      </ul>
+    </section>
+  </main>
+
+  <aside id="recomendaciones">
+    <h2>Recomendaciones para solicitudes de rescate</h2>
+    <p>Si identificas un enjambre cerca de tu vivienda o lugar de trabajo, mantén una distancia prudente, evita golpear o rociar el enjambre y contacta a personal capacitado.</p>
+  </aside>
+
+  <footer>
+    <p><button type="button" id="btn-arriba">Volver arriba</button></p>
+    <p><small>&copy; <span id="anio">2026</span> Apiario Familiar BeeCalderon · Desarrollado por Angel L. Calderon · Matrícula: 2024-0380 · ISW-311</small></p>
+  </footer>
+
 </body>
 </html>

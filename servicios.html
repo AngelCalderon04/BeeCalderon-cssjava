@@ -1,135 +1,202 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicios | BeeCalderones</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo de miel de abeja y rescate responsable de enjambres en BeeCalderones.">
+  <title>Servicios | BeeCalderones</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <script src="js/app.js" defer></script>
 </head>
 <body>
 
-  
   <header>
     <h1>Nuestros productos y servicios</h1>
-    <p>En <strong>BeeCalderones</strong> ofrecemos diferentes presentaciones de miel de abeja y servicios relacionados con el manejo responsable de enjambres. Conoce nuestras opciones y encuentra la que mejor se adapte a tus necesidades.</p>
+    <p>En <strong>BeeCalderones</strong> ofrecemos diferentes presentaciones de miel de abeja y servicios relacionados con el manejo responsable 
+     de enjambres. Conoce nuestras opciones y encuentra la que mejor se adapte a tus necesidades.</p>
+    <button type="button" id="btn-tema">Modo oscuro</button>
+    <button type="button" id="btn-menu" aria-expanded="false">Menú</button>
   </header>
-  <nav>
+
+  <nav id="menu">
     <a href="index.html">Inicio</a> |
-    <a href="servicios.html">Servicios</a> |
+    <a href="servicios.html" aria-current="page">Servicios</a> |
     <a href="contacto.html">Contacto</a>
   </nav>
-  <main>
 
+  <main>
+    <!-- 1. Catálogo dinámico (para JavaScript y Grid) -->
     <section id="catalogo">
       <h2>Catálogo de productos</h2>
-      <article>
-        <h3>Miel de abeja — Galón</h3>
-        <p><strong>Precio:</strong> <span class="precio">RD$2,400</span></p>
-        <p>Presentación de gran capacidad, ideal para hogares, clientes frecuentes y establecimientos que utilizan miel en cantidades mayores.</p>
-        <p><a href="contacto.html">Consultar disponibilidad</a></p>
-      </article>
-      <article>
-        <h3>Miel de abeja — Medio galón</h3>
-        <p><strong>Precio:</strong> <span class="precio">RD$1,200</span></p>
-        <p>Una alternativa práctica para quienes desean adquirir una buena cantidad de miel para el consumo habitual en el hogar.</p>
-        <p><a href="contacto.html">Consultar disponibilidad</a></p>
-      </article>
-      <article>
-        <h3>Miel de abeja — Botella</h3>
-        <p><strong>Precio:</strong> <span class="precio">RD$800</span></p>
-        <p>Presentación cómoda y fácil de manejar, ideal para acompañar alimentos, endulzar bebidas y disfrutar de la miel en distintas preparaciones.</p>
-        <p><a href="contacto.html">Consultar disponibilidad</a></p>
-      </article>
+
+      <div class="fila">
+        <label for="buscar">Buscar producto:</label>
+        <input type="text" id="buscar" placeholder="Ej. galón, botella, rescate...">
+
+        <label for="filtro-categoria">Categoría:</label>
+        <select id="filtro-categoria">
+          <option value="todos">Todas</option>
+          <option value="Miel">Miel</option>
+          <option value="Servicio">Servicio apícola</option>
+        </select>
+      </div>
+
+      <p id="contador-catalogo">Mostrando catálogo de BeeCalderones</p>
+
+      <div id="contenedor-catalogo" class="catalogo-grid">
+        <article class="tarjeta">
+          <h3>Miel de abeja — Galón</h3>
+          <p><strong>Precio:</strong> <span class="precio">RD$2,400</span></p>
+          <p>Presentación de gran capacidad, ideal para hogares, clientes frecuentes y establecimientos que utilizan miel en cantidades mayores.</p>
+          <p><a href="contacto.html" class="boton">Consultar disponibilidad</a></p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>Miel de abeja — Medio galón</h3>
+          <p><strong>Precio:</strong> <span class="precio">RD$1,200</span></p>
+          <p>Una alternativa práctica para quienes desean adquirir una buena cantidad de miel para el consumo habitual en el hogar.</p>
+          <p><a href="contacto.html" class="boton">Consultar disponibilidad</a></p>
+        </article>
+
+        <article class="tarjeta">
+          <h3>Miel de abeja — Botella</h3>
+          <p><strong>Precio:</strong> <span class="precio">RD$800</span></p>
+          <p>Presentación cómoda y fácil de manejar, ideal para acompañar alimentos, endulzar bebidas y disfrutar de la miel en distintas preparaciones.</p>
+          <p><a href="contacto.html" class="boton">Consultar disponibilidad</a></p>
+        </article>
+      </div>
     </section>
-  </main>
-    
+
     <hr>
 
+    <!-- 2. Tabla de productos y servicios -->
     <section id="servicios-apicolas">
       <h2>Tabla de productos y servicios</h2>
-      <table border="1">
-        <caption>Catálogo comercial BeeCalderones</caption>
-        <thead>
-          <tr>
-            <th scope="col">Producto o servicio</th>
-            <th scope="col">Categoría</th>
-            <th scope="col">Presentación</th>
-            <th scope="col">Precio</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Miel de abeja (Grande)</th>
-            <td>Miel</td>
-            <td>Galón</td>
-            <td>RD$2,400</td>
-          </tr>
-          <tr>
-            <th scope="row">Miel de abeja (Mediana)</th>
-            <td>Miel</td>
-            <td>Medio galón</td>
-            <td>RD$1,200</td>
-          </tr>
-          <tr>
-            <th scope="row">Miel de abeja (Individual)</th>
-            <td>Miel</td>
-            <td>Botella</td>
-            <td>RD$800</td>
-          </tr>
-          <tr>
-            <th scope="row">Evaluación de enjambres</th>
-            <td rowspan="2">Servicio apícola</td>
-            <td>Según el caso</td>
-            <td>A consultar</td>
-          </tr>
-          <tr>
-            <th scope="row">Rescate y reubicación de enjambres</th>
-            <td>Según el caso</td>
-            <td>A consultar</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="4">Nota: Los precios de los productos corresponden a las presentaciones indicadas. Los servicios apícolas requieren una evaluación previa para determinar su viabilidad y costo (las dos últimas filas describen etapas del servicio de rescate).</td>
-          </tr>
-        </tfoot>
-      </table>
-   
+
+      <div class="tabla-contenedor">
+        <table>
+          <caption>Catálogo comercial BeeCalderones</caption>
+          <thead>
+            <tr>
+              <th scope="col">Producto o servicio</th>
+              <th scope="col">Categoría</th>
+              <th scope="col">Presentación</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Miel de abeja (Grande)</th>
+              <td>Miel</td>
+              <td>Galón</td>
+              <td>RD$2,400</td>
+            </tr>
+            <tr>
+              <th scope="row">Miel de abeja (Mediana)</th>
+              <td>Miel</td>
+              <td>Medio galón</td>
+              <td>RD$1,200</td>
+            </tr>
+            <tr>
+              <th scope="row">Miel de abeja (Individual)</th>
+              <td>Miel</td>
+              <td>Botella</td>
+              <td>RD$800</td>
+            </tr>
+            <tr>
+              <th scope="row">Evaluación de enjambres</th>
+              <td rowspan="2">Servicio apícola</td>
+              <td>Según el caso</td>
+              <td>A consultar</td>
+            </tr>
+            <tr>
+              <th scope="row">Rescate y reubicación de enjambres</th>
+              <td>Según el caso</td>
+              <td>A consultar</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">Nota: Los precios de los productos corresponden a las presentaciones indicadas. Los servicios apícolas requieren una 
+              evaluación previa para determinar su viabilidad y costo (las dos últimas filas describen etapas del servicio de rescate).</td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
     </section>
 
-       <hr> 
+    <hr>
+
+    <!-- 3. Rescate y reubicación de enjambres con galería -->
     <section id="rescate-enjambres">
       <h2>Rescate y reubicación responsable de enjambres</h2>
-      <p>En BeeCalderones entendemos que las abejas son esenciales para la naturaleza. Sin embargo, en algunas ocasiones los enjambres pueden instalarse en viviendas, patios, árboles y otros espacios frecuentados por personas.</p>
+      <p>En BeeCalderones entendemos que las abejas son esenciales para la naturaleza. Sin embargo, en algunas ocasiones los enjambres pueden instalarse en 
+      viviendas, patios, árboles y otros espacios frecuentados por personas.</p>
       <p>Nuestro servicio busca evaluar estas situaciones y, cuando sea viable, realizar el rescate y traslado responsable de las abejas a un lugar adecuado.</p>
       <p>El procedimiento dependerá de las condiciones del lugar, la accesibilidad y los riesgos identificados.</p>
       <p><strong>Importante:</strong> No se recomienda intentar retirar un enjambre sin conocimientos, equipo de protección y experiencia adecuados.</p>
       <p><strong>Precio:</strong> A consultar.</p>
-      <p><a href="contacto.html">Solicitar evaluación</a></p>
+      <p><a href="contacto.html" class="boton">Solicitar evaluación</a></p>
 
-      
+      <div class="fila">
+        <figure>
+          <img src="Img/enjambre1.jpeg"
+               alt="Enjambre de abejas agrupado en techo de casa"
+               width="250" height="350">
+          <figcaption>Evaluación de enjambre en vivienda.</figcaption>
+        </figure>
 
-    
-      <div style="display: flex; gap: 15px; flex-wrap: wrap;">
-        <img src="enjambre1.jpeg"
-             alt="Enjambre de abejas agrupado en techo de casa"
-             width="250" height="350">
+        <figure>
+          <img src="Img/enjambre2.jpeg"
+               alt="Enjambre colocado en árbol en el apiario"
+               width="250" height="350">
+          <figcaption>Reubicación en árbol del apiario.</figcaption>
+        </figure>
 
-        <img src="enjambre2.jpeg"
-             alt="Enjambre colocado en arbol en el apiario"
-             width="250" height="350">
+        <figure>
+          <img src="Img/enjambre3.jpeg"
+               alt="Enjambre en árbol en patio residencial"
+               width="250" height="350">
+          <figcaption>Enjambre localizado en patio residencial.</figcaption>
+        </figure>
 
-        <img src="enjambre3.jpeg"
-             alt="Enjambre en árbol en patio residencial "
-             width="250" height="350">
-
-              <video controls width="350" height="350">
-          <source src="rescate.mp4" type="video/mp4">
+        <video controls width="350" height="350">
+          <source src="Img/rescate.mp4" type="video/mp4">
+          Tu navegador no soporta video.
         </video>
       </div>
     </section>
-    
 
-  <hr>
+    <hr>
+
+    <!-- 4. Listas ordenadas y desordenadas -->
+    <section id="como-solicitar">
+      <h2>¿Cómo solicitar nuestros productos?</h2>
+      <ol start="1" type="1">
+        <li>Consulta las presentaciones de miel disponibles.</li>
+        <li>Selecciona el producto y la cantidad que necesitas.</li>
+        <li>Comunícate con BeeCalderones mediante nuestros medios de contacto.</li>
+        <li>Confirma la disponibilidad, el precio y los detalles de entrega.</li>
+        <li>Coordina tu pedido con nuestro equipo.</li>
+      </ol>
+
+      <h3>Nuestros productos y sus usos</h3>
+      <ul>
+        <li>Consumo cotidiano y endulzar bebidas.</li>
+        <li>Acompañar alimentos:
+          <ul>
+            <li>Panes y tostadas.</li>
+            <li>Yogures.</li>
+            <li>Frutas.</li>
+          </ul>
+        </li>
+        <li>Preparación de postres, salsas y aderezos.</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <!-- 5. Glosario apícola -->
     <section id="glosario">
       <h2>Glosario apícola</h2>
       <dl>
@@ -144,9 +211,19 @@
         <dt><strong>Néctar</strong></dt>
         <dd>Sustancia azucarada producida por ciertas flores, utilizada por las abejas como materia prima para elaborar miel.</dd>
       </dl>
+
+      <h3>Información externa sobre apicultura</h3>
+      <iframe src="https://es.m.wikipedia.org/wiki/Apicultura"
+              width="320" height="200"
+              title="Información educativa sobre la apicultura en Wikipedia">
+      </iframe>
     </section>
+  </main>
 
-
+  <footer>
+    <p><button type="button" id="btn-arriba">Volver arriba</button></p>
+    <p><small>&copy; <span id="anio">2026</span> Apiario Familiar BeeCalderon · Desarrollado por Angel L. Calderon · Matrícula: 2024-0380 · ISW-311</small></p>
+  </footer>
 
 </body>
 </html>
