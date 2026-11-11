@@ -1,24 +1,26 @@
-/*  MODO OSCURO (Funciona en las 3 páginas y se recuerda) */
+
 const btnTema = document.getElementById("btn-tema");
 
-// Revisar si el usuario ya había elegido modo oscuro antes
 if (localStorage.getItem("temaBeeCalderones") === "oscuro") {
   document.body.classList.add("oscuro");
+
   if (btnTema) {
-    btnTema.textContent = "Modo claro"; 
+    btnTema.textContent = "Modo claro";
   }
 }
 
 function alternarTema() {
   document.body.classList.toggle("oscuro");
+
   const esOscuro = document.body.classList.contains("oscuro");
 
-  if (esOscuro) {
-    localStorage.setItem("temaBeeCalderones", "oscuro");
-    btnTema.textContent = "Modo claro";
-  } else {
-    localStorage.setItem("temaBeeCalderones", "claro");
-    btnTema.textContent = "Modo oscuro";
+  localStorage.setItem(
+    "temaBeeCalderones",
+    esOscuro ? "oscuro" : "claro"
+  );
+
+  if (btnTema) {
+    btnTema.textContent = esOscuro ? "Modo claro" : "Modo oscuro";
   }
 }
 
@@ -26,41 +28,51 @@ if (btnTema) {
   btnTema.addEventListener("click", alternarTema);
 }
 
-/* MENÚ HAMBURGUESA Y AÑO AUTOMÁTICO EN EL FOOTER */
+
 const btnMenu = document.getElementById("btn-menu");
 const menuNav = document.querySelector("nav");
 
 function alternarMenu() {
+  if (!btnMenu || !menuNav) {
+    return;
+  }
+
   menuNav.classList.toggle("abierto");
+
   const estaAbierto = menuNav.classList.contains("abierto");
-  btnMenu.setAttribute("aria-expanded", estaAbierto);
+
+  btnMenu.setAttribute("aria-expanded", String(estaAbierto));
 }
 
 if (btnMenu && menuNav) {
   btnMenu.addEventListener("click", alternarMenu);
 }
 
-// Año automático en el pie de página
+
 const spanAnio = document.getElementById("anio");
+
 if (spanAnio) {
   spanAnio.textContent = new Date().getFullYear();
 }
 
-/*  BOTÓN VOLVER ARRIBA */
+
 const btnArriba = document.getElementById("btn-arriba");
 
 if (btnArriba) {
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 200) {
-      btnArriba.hidden = false;
-    } else {
-      btnArriba.hidden = true;
-    }
-  });
+  function controlarBotonArriba() {
+    btnArriba.hidden = window.scrollY <= 200;
+  }
+
+  window.addEventListener("scroll", controlarBotonArriba);
 
   btnArriba.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
   });
+
+  controlarBotonArriba();
 }
 
 
@@ -69,39 +81,46 @@ const productosBeeCalderones = [
     nombre: "Miel de abeja — Galón",
     categoria: "Miel",
     precio: 2400,
-    descripcion: "Presentación de gran capacidad, ideal para hogares, clientes frecuentes y establecimientos."
+    descripcion: "Presentación de gran capacidad, ideal para hogares, clientes frecuentes y establecimientos.",
+    imagen: "img/galonmiel.jpg"
   },
   {
     nombre: "Miel de abeja — Medio galón",
     categoria: "Miel",
     precio: 1200,
-    descripcion: "Alternativa práctica para quienes desean una buena cantidad de miel para el consumo habitual."
+    descripcion: "Alternativa práctica para quienes desean una buena cantidad de miel para el consumo habitual.",
+    imagen: "img/medioGalon.jpg"
   },
   {
     nombre: "Miel de abeja — Botella",
     categoria: "Miel",
     precio: 800,
-    descripcion: "Presentación cómoda y fácil de manejar para acompañar alimentos y endulzar bebidas."
+    descripcion: "Presentación cómoda para acompañar alimentos y endulzar bebidas.",
+    imagen: "img/botellamiel.jpg"
   },
   {
     nombre: "Miel con panal artesanal",
     categoria: "Miel",
     precio: 950,
-    descripcion: "Miel pura acompañada de trozos de panal natural recién cosechado de nuestras colmenas."
+    descripcion: "Miel acompañada de trozos de panal natural.",
+    imagen: "img/panal.jpeg"
   },
   {
     nombre: "Evaluación de enjambres",
     categoria: "Servicio",
     precio: 0,
-    descripcion: "Inspección de seguridad y viabilidad cuando un enjambre se instala en viviendas o patios."
+    descripcion: "Evaluación de seguridad y viabilidad cuando un enjambre se encuentra en viviendas o patios.",
+    imagen: "img/enjambre1.jpeg"
   },
   {
     nombre: "Rescate y reubicación de enjambres",
     categoria: "Servicio",
     precio: 0,
-    descripcion: "Retiro cuidadoso con equipo de protección y traslado responsable de las abejas a nuestro apiario."
+    descripcion: "Retiro y traslado responsable de abejas cuando las condiciones permiten realizarlo de forma segura.",
+    imagen: "img/enjambre2.jpeg"
   }
 ];
+
 
 const contenedorCatalogo = document.getElementById("contenedor-catalogo");
 const inputBuscar = document.getElementById("buscar");
@@ -112,36 +131,82 @@ function formatearPrecio(valor) {
   if (valor === 0) {
     return "A consultar";
   }
-  return valor.toLocaleString("es-DO", { style: "currency", currency: "DOP" });
+
+  return valor.toLocaleString("es-DO", {
+    style: "currency",
+    currency: "DOP"
+  });
 }
 
 function pintarTarjetas(lista) {
+  if (!contenedorCatalogo || !textoContador) {
+    return;
+  }
+
   contenedorCatalogo.innerHTML = "";
 
-  textoContador.textContent = `Mostrando ${lista.length} de ${productosBeeCalderones.length} opciones`;
+  textoContador.textContent =
+    `Mostrando ${lista.length} de ${productosBeeCalderones.length} opciones`;
 
   if (lista.length === 0) {
     const aviso = document.createElement("p");
-    aviso.textContent = "No encontramos productos con esa búsqueda. Intenta con otra palabra.";
-    contenedorCatalogo.append(aviso);
+
+    aviso.textContent =
+      "No encontramos resultados. Intenta con otra palabra o categoría.";
+
+    contenedorCatalogo.appendChild(aviso);
     return;
   }
 
   lista.forEach((item) => {
     const tarjeta = document.createElement("article");
     tarjeta.className = "tarjeta";
-    tarjeta.innerHTML = `
-      <h3>${item.nombre}</h3>
-      <p><strong>Categoría:</strong> ${item.categoria}</p>
-      <p><strong>Precio:</strong> <span class="precio">${formatearPrecio(item.precio)}</span></p>
-      <p>${item.descripcion}</p>
-      <p><a href="contacto.html" class="boton">Consultar disponibilidad</a></p>
-    `;
-    contenedorCatalogo.append(tarjeta);
+
+    const imagen = document.createElement("img");
+    imagen.src = item.imagen;
+    imagen.alt = `Imagen ilustrativa del apiario relacionada con ${item.nombre}`;
+    imagen.loading = "lazy";
+    imagen.className = "imagen-producto";
+
+    const titulo = document.createElement("h3");
+    titulo.textContent = item.nombre;
+
+    const categoria = document.createElement("p");
+    categoria.textContent = `Categoría: ${item.categoria}`;
+
+    const precio = document.createElement("p");
+    precio.textContent = `Precio: ${formatearPrecio(item.precio)}`;
+
+    const descripcion = document.createElement("p");
+    descripcion.textContent = item.descripcion;
+
+    const parrafoEnlace = document.createElement("p");
+    const enlace = document.createElement("a");
+
+    enlace.href = "contacto.html";
+    enlace.className = "boton";
+    enlace.textContent = "Consultar disponibilidad";
+
+    parrafoEnlace.appendChild(enlace);
+
+    tarjeta.append(
+      imagen,
+      titulo,
+      categoria,
+      precio,
+      descripcion,
+      parrafoEnlace
+    );
+
+    contenedorCatalogo.appendChild(tarjeta);
   });
 }
 
 function filtrarCatalogo() {
+  if (!inputBuscar || !selectCategoria) {
+    return;
+  }
+
   const texto = inputBuscar.value.toLowerCase().trim();
   const categoriaElegida = selectCategoria.value;
 
@@ -149,8 +214,10 @@ function filtrarCatalogo() {
     const coincideTexto =
       item.nombre.toLowerCase().includes(texto) ||
       item.descripcion.toLowerCase().includes(texto);
+
     const coincideCategoria =
-      categoriaElegida === "todos" || item.categoria === categoriaElegida;
+      categoriaElegida === "todos" ||
+      item.categoria === categoriaElegida;
 
     return coincideTexto && coincideCategoria;
   });
@@ -158,13 +225,19 @@ function filtrarCatalogo() {
   pintarTarjetas(filtrados);
 }
 
-if (contenedorCatalogo && inputBuscar && selectCategoria) {
+if (
+  contenedorCatalogo &&
+  inputBuscar &&
+  selectCategoria &&
+  textoContador
+) {
   pintarTarjetas(productosBeeCalderones);
+
   inputBuscar.addEventListener("input", filtrarCatalogo);
   selectCategoria.addEventListener("change", filtrarCatalogo);
 }
 
-/* VALIDACIÓN DEL FORMULARIO (Solo en contacto.html) */
+
 const formContacto = document.getElementById("form-contacto");
 
 if (formContacto) {
@@ -172,7 +245,10 @@ if (formContacto) {
   const campoCorreo = document.getElementById("correo");
   const campoTelefono = document.getElementById("telefono");
   const campoCantidad = document.getElementById("cantidad");
-  const casillasPedido = document.querySelectorAll('input[name="pedido"]');
+
+  const casillasPedido =
+    document.querySelectorAll('input[name="pedido"]');
+
   const cajaExito = document.getElementById("mensaje-exito");
 
   const errorNombre = document.getElementById("error-nombre");
@@ -181,85 +257,181 @@ if (formContacto) {
   const errorPedido = document.getElementById("error-pedido");
   const errorCantidad = document.getElementById("error-cantidad");
 
-  // Limpiar el error cuando el usuario escribe
-  campoNombre.addEventListener("input", () => {
-    errorNombre.textContent = "";
-    campoNombre.classList.remove("invalido");
-  });
+  function mostrarError(campo, elementoError, mensaje) {
+    elementoError.textContent = mensaje;
 
-  campoCorreo.addEventListener("input", () => {
-    errorCorreo.textContent = "";
-    campoCorreo.classList.remove("invalido");
-  });
+    if (campo) {
+      campo.classList.add("invalido");
+    }
+  }
 
-  campoTelefono.addEventListener("input", () => {
-    errorTelefono.textContent = "";
-    campoTelefono.classList.remove("invalido");
-  });
+  function limpiarError(campo, elementoError) {
+    elementoError.textContent = "";
 
-  formContacto.addEventListener("submit", (e) => {
-    e.preventDefault();
-    let hayErrores = false;
+    if (campo) {
+      campo.classList.remove("invalido");
+    }
+  }
 
-    // Regla 1: Nombre mínimo 3 letras
-    const nombreValor = campoNombre.value.trim();
-    if (nombreValor.length < 3) {
-      errorNombre.textContent = "Escribe tu nombre completo (mínimo 3 letras).";
-      campoNombre.classList.add("invalido");
-      hayErrores = true;
+  function validarNombre() {
+    const nombre = campoNombre.value.trim();
+
+    if (nombre.length < 3) {
+      mostrarError(
+        campoNombre,
+        errorNombre,
+        "Escribe tu nombre completo (mínimo 3 caracteres)."
+      );
+      return false;
     }
 
-    // Regla 2: Correo válido con @ y punto
-    const correoValor = campoCorreo.value.trim();
-    if (!correoValor.includes("@") || !correoValor.includes(".")) {
-      errorCorreo.textContent = "Escribe un correo válido (ejemplo: tu@correo.com).";
-      campoCorreo.classList.add("invalido");
-      hayErrores = true;
+    limpiarError(campoNombre, errorNombre);
+    return true;
+  }
+
+  function validarCorreo() {
+    const correo = campoCorreo.value.trim();
+
+    if (!correo || !campoCorreo.validity.valid) {
+      mostrarError(
+        campoCorreo,
+        errorCorreo,
+        "Escribe un correo electrónico válido."
+      );
+      return false;
     }
 
-    // Regla 3: Teléfono dominicano (809, 829 u 849 + 7 números = 10 dígitos)
+    limpiarError(campoCorreo, errorCorreo);
+    return true;
+  }
+
+  function validarTelefono() {
     const soloNumeros = campoTelefono.value.replace(/\D/g, "");
-    const prefijoValido =
-      soloNumeros.startsWith("809") ||
-      soloNumeros.startsWith("829") ||
-      soloNumeros.startsWith("849");
 
-    if (soloNumeros.length !== 10 || !prefijoValido) {
-      errorTelefono.textContent = "Ingresa un teléfono dominicano válido de 10 dígitos (809, 829 u 849).";
-      campoTelefono.classList.add("invalido");
-      hayErrores = true;
+    const telefonoValido = /^(809|829|849)\d{7}$/.test(soloNumeros);
+
+    if (!telefonoValido) {
+      mostrarError(
+        campoTelefono,
+        errorTelefono,
+        "El teléfono debe tener 10 dígitos y comenzar con 809, 829 o 849."
+      );
+      return false;
     }
 
-    // Regla 4: Al menos un producto o servicio marcado en el checklist
-    const seleccionados = [];
-    for (const casilla of casillasPedido) {
-      if (casilla.checked) {
-        seleccionados.push(casilla.value);
-      }
-    }
+    limpiarError(campoTelefono, errorTelefono);
+    return true;
+  }
+
+  function obtenerSeleccionados() {
+    return Array.from(casillasPedido)
+      .filter((casilla) => casilla.checked)
+      .map((casilla) => casilla.value);
+  }
+
+  function validarPedido() {
+    const seleccionados = obtenerSeleccionados();
 
     if (seleccionados.length === 0) {
-      errorPedido.textContent = "Marca con un cotejo al menos un producto o servicio.";
-      hayErrores = true;
-    } else {
-      errorPedido.textContent = "";
+      errorPedido.textContent =
+        "Selecciona al menos un producto o servicio.";
+      return false;
     }
 
-    // Regla 5: Cantidad entre 1 y 50
-    const cantidadValor = Number(campoCantidad.value);
-    if (cantidadValor < 1 || cantidadValor > 50) {
-      errorCantidad.textContent = "La cantidad debe estar entre 1 y 50 unidades.";
-      campoCantidad.classList.add("invalido");
-      hayErrores = true;
-    } else {
-      errorCantidad.textContent = "";
+    errorPedido.textContent = "";
+    return true;
+  }
+
+  function validarCantidad() {
+    const cantidadTexto = campoCantidad.value.trim();
+    const cantidad = Number(cantidadTexto);
+
+    if (
+      cantidadTexto === "" ||
+      !Number.isInteger(cantidad) ||
+      cantidad < 1 ||
+      cantidad > 50
+    ) {
+      mostrarError(
+        campoCantidad,
+        errorCantidad,
+        "La cantidad debe ser un número entero entre 1 y 50."
+      );
+      return false;
     }
 
-    // Si todo está correcto, mostrar mensaje de éxito en la página
-    if (!hayErrores) {
+    limpiarError(campoCantidad, errorCantidad);
+    return true;
+  }
+
+  campoNombre.addEventListener("input", validarNombre);
+  campoCorreo.addEventListener("input", validarCorreo);
+  campoTelefono.addEventListener("input", validarTelefono);
+  campoCantidad.addEventListener("input", validarCantidad);
+
+  casillasPedido.forEach((casilla) => {
+    casilla.addEventListener("change", validarPedido);
+  });
+
+  formContacto.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    if (cajaExito) {
+      cajaExito.hidden = true;
+      cajaExito.textContent = "";
+    }
+
+    const nombreValido = validarNombre();
+    const correoValido = validarCorreo();
+    const telefonoValido = validarTelefono();
+    const pedidoValido = validarPedido();
+    const cantidadValida = validarCantidad();
+
+    const todoValido =
+      nombreValido &&
+      correoValido &&
+      telefonoValido &&
+      pedidoValido &&
+      cantidadValida;
+
+    if (!todoValido) {
+      const primerCampoInvalido =
+        formContacto.querySelector(".invalido");
+
+      if (primerCampoInvalido) {
+        primerCampoInvalido.focus();
+      }
+
+      return;
+    }
+
+    const nombre = campoNombre.value.trim();
+    const telefono = campoTelefono.value.trim();
+    const seleccionados = obtenerSeleccionados();
+    const cantidad = Number(campoCantidad.value);
+
+    if (cajaExito) {
       cajaExito.hidden = false;
-      cajaExito.textContent = `¡Gracias, ${nombreValor}! Recibimos tu solicitud de: ${seleccionados.join(", ")} (${cantidadValor} unidad/es). Te contactaremos pronto al ${campoTelefono.value}.`;
-      formContacto.reset();
+
+      cajaExito.textContent =
+        `¡Solicitud validada correctamente, ${nombre}! ` +
+        `Productos o servicios: ${seleccionados.join(", ")}. ` +
+        `Cantidad indicada: ${cantidad}. ` +
+        `Teléfono: ${telefono}. ` +
+        `Esta es una demostración académica; los datos no se han enviado.`;
     }
+
+    formContacto.reset();
+
+    [
+      [campoNombre, errorNombre],
+      [campoCorreo, errorCorreo],
+      [campoTelefono, errorTelefono],
+      [campoCantidad, errorCantidad]
+    ].forEach(([campo, error]) => {
+      limpiarError(campo, error);
+    });
+
+    errorPedido.textContent = "";
   });
 }
