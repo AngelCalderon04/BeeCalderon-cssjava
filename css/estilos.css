@@ -296,9 +296,6 @@ textarea {
   margin-top: var(--espacio);
 }
 
-/* 
-   6. DISEÑO ADAPTABLE (MEDIA QUERIES)
- */
 @media (max-width: 768px) {
   .fila {
     flex-direction: column;
